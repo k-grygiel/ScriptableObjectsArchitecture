@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +22,7 @@ namespace ScriptableObjects.Events
 
         public void Raise(T value)
         {
-            for (int i = listeners.Count; i >= 0; i--)
+            for (int i = listeners.Count - 1; i >= 0; i--)
             {
                 listeners[i].OnEventRaised(value);
             }

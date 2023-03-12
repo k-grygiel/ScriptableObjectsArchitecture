@@ -6,9 +6,7 @@ namespace ScriptableObjects
     [CreateAssetMenu(fileName = "VoidScriptableEvent", menuName = "ScriptableEvent/VoidScriptableEvent")]
     public class VoidScriptableEvent : ScriptableObject
     {
-        [SerializeField] private string description;
-
-        private List<IVoidEventListener> listeners = new ();
+        private List<IVoidEventListener> listeners = new();
 
         public void RegisterListener(IVoidEventListener listener)
         {
@@ -25,7 +23,7 @@ namespace ScriptableObjects
 
         public void Raise()
         {
-            for (int i = listeners.Count; i >= 0; i--)
+            for (int i = listeners.Count - 1; i >= 0; i--)
             {
                 listeners[i].OnEventRaised();
             }
