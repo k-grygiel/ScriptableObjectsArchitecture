@@ -8,6 +8,10 @@ namespace ScriptableObjects
     {
         private List<IVoidEventListener> listeners = new();
 
+#if UNITY_EDITOR
+        public IReadOnlyList<IVoidEventListener> Listeners => listeners.AsReadOnly();
+#endif
+
         public void RegisterListener(IVoidEventListener listener)
         {
             if (listeners.Contains(listener))

@@ -7,6 +7,10 @@ namespace ScriptableObjects.Events
     {
         private List<IEventListener<T>> listeners = new();
 
+#if UNITY_EDITOR
+        public IReadOnlyList<IEventListener<T>> Listeners => listeners.AsReadOnly();
+#endif
+
         public void RegisterListener(IEventListener<T> listener)
         {
             if (listeners.Contains(listener))
